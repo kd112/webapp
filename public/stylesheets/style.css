@@ -8,7 +8,9 @@ a {
 }*/
 
 html, body, #map-canvas { height: 97.60%; width: 100%; }
-
+.navbar{background-color:#f0f0f5;}
+.navbar-dropdown{background-color: #f0f0f5;}
+.dropdown-menu{background-color: #f0f0f5;}
 .iframe-container{
     position: relative;
     width: 100%;
