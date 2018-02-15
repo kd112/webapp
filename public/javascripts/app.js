@@ -5,11 +5,10 @@ $(document).ready(function () {
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    
-    L.tileLayer("http://localhost:8080/geoserver/wms?bbox=58.10,5.06,103.19,37.24&Format=image/png&request=GetMap&layers=India:State&width=256&height=256&srs=EPSG:4326&TRANSPARENT=TRUE&tiled=true").addTo(map);
-    L.control.zoom({
-     position:'bottomright'
-	}).addTo(map);
-
+	
+	$.getJSON("../states.geojson", function(geojson) {
+		console.log(geojson)
+                L.geoJSON(geojson).addTo(map);
+            });
 	});
 
