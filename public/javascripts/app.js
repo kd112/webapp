@@ -5,15 +5,10 @@ $(document).ready(function () {
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-	console.log(map);
-	$.getJSON("../states.geojson", function(geojson) {
-		// console.log(geojson)
-                L.geoJSON(geojson).addTo(map);
-            });
-
     map.on("zoom",function(){
         console.log(map.getBounds())
-        $.ajax({url:"/geo",success:function(){
+        $.ajax({url:"/geo",success:function(d){
+            L.geoJSON(d).addTo(map);
             console.log("geo call success")
         }})
     })

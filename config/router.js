@@ -10,8 +10,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/geo',function(req,res,next){
 	GEO = new(geo);
-	console.log(GEO.geoserver())
-	// GEO.get_geoserver()
-	res.send("geo success")
+
+	GEO.geoserver(function(json){
+		res.send(json);
+
+	})
 })
 module.exports = router;
