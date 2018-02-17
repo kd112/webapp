@@ -9,7 +9,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/geo',function(req,res,next){
-	GEO = new(geo);
+	// console.log("this")
+	var bbox = req.param('BBOX') || '';
+	var zoom = req.param('zoom') || '';
+	// console.log("bbox:",bbox,"zoom",zoom)
+	GEO = new geo(bbox,zoom);
 
 	GEO.geoserver(function(json){
 		res.send(json);
