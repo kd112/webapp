@@ -5,6 +5,16 @@ $(document).ready(function () {
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    
+    // var gj= new L.geoJSON();
+    // console.log(gj);
+    // map.on("load",function(){
+    //     console.log("load");
+    // })
+    //load the layers on zoom
+    $.getJSON("/geo",function(d){
+        L.geoJSON(d).addTo(map);
+    });
     map.on("zoom",function(){
         console.log(map.getBounds())
         $.ajax({url:"/geo",success:function(d){
